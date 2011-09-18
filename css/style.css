@@ -1,0 +1,30 @@
+body {
+	background-color: black;
+	color: white;
+	font-size: 25px;
+	margin: 0;
+	padding: 0;
+}
+input#query {
+	width: 90%;
+	margin-left: 5%;
+	margin-top: 30px;
+	height: 70px;
+	border-radius: 10px;
+	-webkit-box-shadow: 0 0 30px #5C61FF;	
+	font-size: 40px;
+}
+
+div#verseHolder {
+	padding: 10px 10% 0px 10%;
+	text-align: justify;
+}
+
+span.verseNum {
+	font-size: 25px;
+	margin-bottom: 5px;
+}
+
+span.verseText {
+	font-size: 35px;
+}
