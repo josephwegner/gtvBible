@@ -8,21 +8,26 @@ body {
 input#query {
 	width: 90%;
 	margin-left: 5%;
-	margin-top: 30px;
-	height: 70px;
+	margin-top: 2%;
+	height: 8%;
 	border-radius: 10px;
-	-webkit-box-shadow: 0 0 30px #5C61FF;	
+	-webkit-box-shadow: 0 0 30px #383FFF;	
 	font-size: 40px;
 }
 
+div#verseWrap {
+	height: 80%;
+	overflow: hidden;
+}
+
 div#verseHolder {
-	padding: 10px 10% 0px 10%;
+	padding: 2% 10% 0px 10%;
 	text-align: justify;
 }
 
 span.verseNum {
 	font-size: 25px;
-	margin-bottom: 5px;
+	color: #383FFF;
 }
 
 span.verseText {

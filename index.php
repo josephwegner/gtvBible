@@ -7,7 +7,11 @@
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
 <script type="text/javascript">
 $(document).ready(function() {
+	var maxScroll = $("#verseHolder").height() - $("#verseWrap").height() + 40;
+	var scrollChunk = Math.round($("#verseWrap").height() / 3);
+
 	$("form#searchForm").submit(function(e) {
+
 		e.preventDefault();
 
 		query = $("#query").val();
@@ -27,19 +31,51 @@ $(document).ready(function() {
 				});
 
 				$("#verseHolder").html(verses);
+
+				maxScroll = $("#verseHolder").height() - $("#verseWrap").height() + 40;
 			},
 			error: function(msg) {
 				alert(msg);
 			}
 		});
 	});
+	
+	$("body").keyup(function(e) {
+		console.log(e.which);
+		if(e.which == 38) {
+			scrollUp(scrollChunk);
+		} else if(e.which == 40) {
+			scrollDown(scrollChunk, maxScroll);
+		}
+	});	
 });
+function scrollUp(chunk) {
+	var curScroll = parseInt($("#verseHolder").css('margin-top')) * -1;
+	console.log(curScroll + " " + chunk);
+	if(curScroll < chunk && curScroll !== 0) {
+		$("#verseHolder").stop().animate({'margin-top': 0}, 300);
+	} else if(curScroll !== 0) {
+		$("#verseHolder").stop().animate({'margin-top': (curScroll - chunk) * -1}, 300); 
+	}
+}
+
+function scrollDown(chunk, maxScroll) {
+	var curScroll = parseInt($("#verseHolder").css('margin-top')) * -1;
+console.log(curScroll + " " + maxScroll + " " + chunk);
+	if((maxScroll - curScroll) < chunk && (maxScroll - curScroll) !== 0) {
+		$("#verseHolder").stop().animate({'margin-top': maxScroll * -1}, 300);
+	} else if(maxScroll - curScroll !== 0) {
+		$("#verseHolder").stop().animate({'margin-top': (curScroll + chunk) * -1}, 300);
+	}
+}
 </script>
 </head>
 <body>
 	<form id="searchForm" name="searchVerses" action="#" type="POST">
 		<input type="text" name="query" id="query" placeholder="eg. Isaiah 1:10" />
 	</form>
-	<div id="verseHolder"></div>
+	<div id="verseWrap">
+		<div id="verseHolder"></div>
+	</div>
 </body>
 </html>
