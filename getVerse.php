@@ -1,7 +1,9 @@
 <?
 	$query = $_POST['query'];
 
-	$url = "http://api.preachingcentral.com/bible.php?passage=".urlencode($query);
+	$url = "http://www.esvapi.org/v2/rest/passageQuery?key=IP&".
+		"include-passage-references=0&include-footnotes=0&".
+		"include-short-copyright=0&passage=".urlencode($query);
 	
 	$ch = curl_init($url);
 

@@ -21,7 +21,7 @@ $(document).ready(function() {
 			url: "getVerse.php",
 			data: { "query": query },
 			success: function(msg) {
-				var xml = $.parseXML(msg);
+			/*	var xml = $.parseXML(msg);
 				
 				var verses = "";
 				
@@ -31,7 +31,8 @@ $(document).ready(function() {
 				});
 
 				$("#verseHolder").html(verses);
-
+*/
+				$("#verseHolder").html(msg);
 				maxScroll = $("#verseHolder").height() - $("#verseWrap").height() + 40;
 			},
 			error: function(msg) {
